@@ -5,7 +5,9 @@
       <li>菜单1</li>
       <li>菜单2</li>
     </ul>
-    <span class="toggleAside" @click="toggleMenu">Toggle</span>
+    <div class="toggleAside" @click="toggleMenu">
+      <i class="iconfont icon-menu"></i>
+    </div>
   </div>
 </template>
 
@@ -16,17 +18,18 @@ export default {
   setup() {
     const asideVisible = inject<Ref<boolean>>("asideVisible");
     console.log(`topnav 获取的 asideVisible: ${asideVisible.value}`);
-    
+
     const toggleMenu = () => {
-          asideVisible.value = !asideVisible.value
-      }
-      return { toggleMenu }
+      asideVisible.value = !asideVisible.value;
+    };
+    return { toggleMenu };
   },
 };
 </script>
 
 
 <style lang="scss" scoped>
+@import url(//at.alicdn.com/t/font_3345733_jhzu8wzoj39.css);
 .topnav {
   background: pink;
   display: flex;
@@ -48,6 +51,31 @@ export default {
     flex-wrap: nowrap;
     > li {
       margin: 0 1em;
+    }
+  }
+  > .toggleAside {
+    width: 24px;
+    height: 24px;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+
+    > .icon-menu {
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    > .menu {
+      display: none;
+    }
+    > .logo {
+      margin: 0 auto;
+    }
+    > .toggleAside {
+      display: inline-block;
     }
   }
 }
