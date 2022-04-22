@@ -1,9 +1,10 @@
 <template>
   <div>
     ButtonDemo page
-    <Button>
-        Hello Button
-    </Button>
+    <Button>Hello Button</Button>
+    <Button theme="button">Hello Button</Button>
+    <Button theme="link">Hello Button</Button>
+    <Button theme="text">Hello Button</Button>
   </div>
 </template>
 
@@ -11,6 +12,11 @@
 import Button from "../lib/Button.vue";
 export default {
   components: { Button },
-  setup() {},
+  setup() {
+    const onClick = () => {
+      console.log("hi Click");
+    };
+    return { onClick };
+  },
 };
 </script>
