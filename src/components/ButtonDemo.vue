@@ -25,6 +25,7 @@
   <div>
     <h2>Loading</h2>
     <Button loading>Loading</Button>
+    <Button>Loaded</Button>
   </div>
 </template>
 
