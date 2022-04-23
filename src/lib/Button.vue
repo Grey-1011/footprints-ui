@@ -1,6 +1,12 @@
 <template>
   <div class="buttons">
-    <button v-bind="$attrs" class="no-all-button" :class="classes">
+    <button
+      v-bind="$attrs"
+      class="no-all-button"
+      :class="classes"
+      :disabled="disabled"
+    >
+      <div v-if="loading" class="no-loadingIndicator"></div>
       <span>
         <slot />
       </span>
@@ -20,11 +26,27 @@ export default {
       type: String,
       default: "normal",
     },
+    level: {
+      type: String,
+      default: "normal",
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props) {
-    const { theme, size } = props;
+    const { theme, size, level } = props;
     const classes = computed(() => {
-      return { [`no-theme-${theme}`]: theme, [`no-size-${size}`]: size };
+      return {
+        [`no-theme-${theme}`]: theme,
+        [`no-size-${size}`]: size,
+        [`no-level-${level}`]: level,
+      };
     });
     return { classes };
   },
@@ -33,15 +55,17 @@ export default {
 
 <style lang="scss">
 .buttons {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
+  // margin-bottom: 24px;
+  // border: 1px solid #000;
 }
 .no-all-button {
   display: inline-flex;
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
-  margin-top: 30px;
+  margin-bottom: 16px;
   margin-left: 25px;
   background: #fff;
   border: none;
@@ -83,6 +107,56 @@ export default {
     font-size: 12px;
     height: 20px;
     padding: 0 4px;
+  }
+
+  &.no-level-main {
+    background: #40a9ff;
+    color: #fff;
+    border-color: #40a9ff;
+    &:hover,
+    &:focus {
+      background: darken($color: #40a9ff, $amount: 10%);
+      border-color: darken($color: #40a9ff, $amount: 10%);
+    }
+  }
+  &.no-level-danger {
+    background: red;
+    color: #fff;
+    border-color: red;
+    &:hover,
+    &:focus {
+      background: darken($color: red, $amount: 10%);
+      border-color: darken($color: red, $amount: 10%);
+    }
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: grey;
+    &:hover {
+      border-color: grey;
+    }
+  }
+
+  .no-loadingIndicator {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-right: 4px;
+    border-radius: 8px;
+    border-color: #40a9ff #40a9ff #40a9ff transparent;
+    border-style: solid;
+    border-width: 2px;
+    animation: no-spin 1s infinite linear;
+  }
+
+  @keyframes no-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }
 
