@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="btn_check">
-      <button @click="toggle" class="checkbox" :class="{ checked: value }" />
+      <button
+        @click="toggle"
+        class="no-checkbox"
+        :class="{ 'no-checked': value }"
+      />
       <div class="pick"></div>
       <div class="layer"></div>
     </div>
@@ -21,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .btn_check {
   position: relative;
   width: 200px;
@@ -43,7 +47,7 @@ export default {
     border-radius: 100px;
   }
 
-  .checkbox {
+  .no-checkbox {
     position: relative;
     width: 100%;
     height: 100%;
@@ -93,15 +97,15 @@ export default {
     background: #444;
   }
 
-  .checked + .pick:before {
+  .no-checked + .pick:before {
     left: -72px;
   }
 
-  .checked + .pick::after {
+  .no-checked + .pick::after {
     right: 4px;
   }
 
-  .checked ~ .layer {
+  .no-checked ~ .layer {
     background: #e1e1e1;
   }
 }

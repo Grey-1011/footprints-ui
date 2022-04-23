@@ -1,9 +1,8 @@
 <template>
   <div>
-    ButtonDemo page
     <Button>Hello Button</Button>
-    <Button theme="button">Hello Button</Button>
-    <Button theme="link">Hello Button</Button>
+    <Button theme="button">Button</Button>
+    <Button theme="link">Link Button</Button>
     <Button theme="text">Hello Button</Button>
   </div>
 </template>
