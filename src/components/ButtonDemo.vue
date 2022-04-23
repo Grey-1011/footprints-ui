@@ -1,9 +1,16 @@
 <template>
   <div>
+    <h2>Style</h2>
     <Button>Hello Button</Button>
+    <Button theme="text">Text Button</Button>
     <Button theme="button">Button</Button>
     <Button theme="link">Link Button</Button>
-    <Button theme="text">Hello Button</Button>
+  </div>
+  <div>
+    <h2>Size</h2>
+    <Button>Button</Button>
+    <Button size="big">Button</Button>
+    <Button size="small">Button</Button>
   </div>
 </template>
 

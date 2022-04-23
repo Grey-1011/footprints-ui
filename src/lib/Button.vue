@@ -1,79 +1,112 @@
 <template>
-  <button v-bind="$attrs" class="all-button" :class="`no-theme-${theme}`">
-    <span>
-      <slot />
-    </span>
-  </button>
+  <div class="buttons">
+    <button v-bind="$attrs" class="no-all-button" :class="classes">
+      <span>
+        <slot />
+      </span>
+    </button>
+  </div>
 </template>
 
 <script lang="ts">
+import { computed } from "vue";
 export default {
   props: {
     theme: {
       type: String,
-      default: "buttons",
+      default: "default",
     },
+    size: {
+      type: String,
+      default: "normal",
+    },
+  },
+  setup(props) {
+    const { theme, size } = props;
+    const classes = computed(() => {
+      return { [`no-theme-${theme}`]: theme, [`no-size-${size}`]: size };
+    });
+    return { classes };
   },
 };
 </script>
 
 <style lang="scss">
-// $h: 32px;
-// $border-color: #d9d9d9;
-// $color: #333;
-// $blue: #40a9ff;
-// $radius: 4px;
-// .theme-buttons {
-// font-family: "Open Sans", sans-serif;
-// box-sizing: border-box;
-// // height: $h;
-// padding: 0 12px;
-// cursor: pointer;
-// display: inline-flex;
-// justify-content: center;
-// align-items: center;
-// white-space: nowrap;
-// // background: white;
-// // color: $color;
-// border: 1px solid $border-color;
-// border-radius: $radius;
-// box-shadow: 0 1px 0 fade-out($color: #000000, $amount: 0.95);
-
-// & + & {
-//   margin-left: 8px;
-// }
-
-// &:hover,
-// &:focus {
-//   color: $blue;
-//   border-color: $blue;
-// }
-// &:focus {
-//   outline: none;
-// }
-// &::-moz-focus-inner {
-//   border: 0;
-// }
-// }
-
-.all-button {
-  display: block;
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no-all-button {
+  display: inline-flex;
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
-  margin-top: 60px;
+  margin-top: 30px;
+  margin-left: 25px;
   background: #fff;
   border: none;
 }
 
+.no-theme-default {
+  border: 1px solid red;
+  height: 32px;
+  padding: 0 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  background: white;
+  color: #333;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 fade-out($color: #000000, $amount: 0.95);
+
+  &:hover,
+  &:focus {
+    color: #40a9ff;
+    border-color: #40a9ff;
+  }
+  &:focus {
+    outline: none;
+  }
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &.no-size-big {
+    font-size: 24px;
+    height: 48px;
+    padding: 0 16px;
+  }
+  &.no-size-small {
+    font-size: 12px;
+    height: 20px;
+    padding: 0 4px;
+  }
+}
+
+.no-theme-text {
+  border: transparent;
+  box-shadow: none;
+  color: inherit;
+  padding: 8px 12px;
+  &:hover,
+  &:focus {
+    background: darken($color: #000, $amount: 5%);
+    color: darken($color: #fff, $amount: 10%);
+  }
+}
+
 .no-theme-button {
   position: relative;
-  padding: 15px 20px;
+  padding: 8px 12px;
   border: 2px solid #111;
-  display: inline-block;
+  display: flex;
   text-transform: uppercase;
   color: #111;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 14px;
   background: none;
 
   &:before {
@@ -83,7 +116,7 @@ export default {
     left: -2px;
     width: calc(100% + 4px);
     height: calc(100% - 12px);
-    background: #fff;
+    background: #f8f8f8;
     transition: 0.5s ease-in-out;
     transform: scaleY(1);
     transition-delay: 0.5s;
@@ -105,7 +138,7 @@ export default {
     top: -2px;
     height: calc(100% + 4px);
     width: calc(100% - 12px);
-    background: #fff;
+    background: #f8f8f8;
     transition: 0.5s ease-in-out;
     transform: scaleX(1);
   }
@@ -119,9 +152,9 @@ export default {
   position: relative;
   background: #0590fd;
   color: #fff;
-  height: 60px;
-  width: 60px;
-  display: flex;
+  height: 40px;
+  width: 40px;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   transition: 0.5s;
@@ -134,9 +167,9 @@ export default {
   &:before {
     content: "";
     position: absolute;
-    width: 12px;
-    height: 12px;
-    right: 25px;
+    width: 8px;
+    height: 8px;
+    right: 16px;
     border-top: 3px solid #fff;
     border-right: 3px solid #fff;
     transform: rotate(45deg);
@@ -155,9 +188,9 @@ export default {
     content: "";
     position: absolute;
     left: -50px;
-    width: 12px;
-    height: 12px;
-    right: 25px;
+    width: 8px;
+    height: 8px;
+    right: 16px;
     border-top: 3px solid #fff;
     border-right: 3px solid #fff;
     transform: rotate(45deg) translate(-50px, 50px);
