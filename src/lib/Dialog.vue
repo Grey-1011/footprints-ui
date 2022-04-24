@@ -4,11 +4,10 @@
     <div class="no-dialog-wrapper">
       <div class="no-dialog">
         <header>
-          title <span @click="close" class="no-dialog-close"></span>
+          <slot name="title"/> <span @click="close" class="no-dialog-close"></span>
         </header>
         <main>
-          <p>content one</p>
-          <p>content two</p>
+          <slot name="content"/>
         </main>
         <footer>
           <Button level="main" @click="ok">OK</Button>
@@ -23,39 +22,45 @@
 import Button from "../lib/Button.vue";
 export default {
   props: {
+    title: {
+      type: String,
+      default: "title",
+    },
     visible: {
       type: Boolean,
       default: false,
     },
-    closeOnClickOverlay:{
-        type:Boolean,
-        default: true
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true,
     },
-    ok:{
-        type:Function
+    ok: {
+      type: Function,
     },
-    cancel:{
-        type:Function
-    }
+    cancel: {
+      type: Function,
+    },
   },
   components: { Button },
   setup(props, context) {
     const close = () => {
       context.emit("update:visible", !props.visible);
     };
-    const onClickOverlay = ()=>{
-        if(props.closeOnClickOverlay){ close() }
-    }
-    const ok = () =>{
-        if(props.ok ?.() !== false){
-            close()
-        }
-    }
-    const cancel = () =>{
-        context.emit("cancel")
-        close()
-    }
-    return { close, onClickOverlay,ok,cancel };
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        close();
+      }
+    };
+    const ok = () => {
+      if (props.ok?.() !== false) {
+        close();
+      }
+    };
+    const cancel = () => {
+      context.emit("cancel");
+      close();
+    };
+    return { close, onClickOverlay, ok, cancel };
   },
 };
 </script>

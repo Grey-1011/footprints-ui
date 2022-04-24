@@ -2,12 +2,15 @@
   <div>
     DialogDemo page
     <Button @click="toggle">toggle</Button>
-    <Dialog
-      v-model:visible="visible"
-      :closeOnClickOverlay="false"
-      :ok="fn1"
-      :cancel="fn2"
-    ></Dialog>
+    <Dialog v-model:visible="visible" :closeOnClickOverlay="false" :ok="fn1" :cancel="fn2">
+        <template v-slot:content>
+            <div>some contents...</div>
+            <div>some contents...</div>
+        </template>
+        <template v-slot:title>
+            <strong>title</strong>
+        </template>        
+    </Dialog>
   </div>
 </template>
 
@@ -24,12 +27,10 @@ export default {
       visible.value = !visible.value;
     };
     const fn1 = () => {
-        return false
+      return false;
     };
-    const fn2 = ()=>{
-
-    }
-    return { visible, toggle,fn1,fn2 };
+    const fn2 = () => {};
+    return { visible, toggle, fn1, fn2 };
   },
 };
 </script>
