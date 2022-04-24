@@ -1,23 +1,31 @@
 <template>
-  <div class="no-dialog-overlay"></div>
-  <div class="no-dialog-wrapper">
-    <div class="no-dialog">
-      <header>title <span class="no-dialog-close"></span></header>
-      <main>
-        <p>content one</p>
-        <p>content two</p>
-      </main>
-      <footer>
-        <Button level="main">OK</Button>
-        <Button>Cancel</Button>
-      </footer>
+  <template v-if="visible">
+    <div class="no-dialog-overlay"></div>
+    <div class="no-dialog-wrapper">
+      <div class="no-dialog">
+        <header>title <span class="no-dialog-close"></span></header>
+        <main>
+          <p>content one</p>
+          <p>content two</p>
+        </main>
+        <footer>
+          <Button level="main">OK</Button>
+          <Button>Cancel</Button>
+        </footer>
+      </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script lang="ts">
 import Button from "../lib/Button.vue";
 export default {
+  props: {
+    visible: {
+      type: Boolean,
+      default: false,
+    },
+  },
   components: { Button },
 };
 </script>
