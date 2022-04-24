@@ -1,16 +1,18 @@
 <template>
   <template v-if="visible">
-    <div class="no-dialog-overlay"></div>
+    <div class="no-dialog-overlay" @click="onClickOverlay"></div>
     <div class="no-dialog-wrapper">
       <div class="no-dialog">
-        <header>title <span class="no-dialog-close"></span></header>
+        <header>
+          title <span @click="close" class="no-dialog-close"></span>
+        </header>
         <main>
           <p>content one</p>
           <p>content two</p>
         </main>
         <footer>
-          <Button level="main">OK</Button>
-          <Button>Cancel</Button>
+          <Button level="main" @click="ok">OK</Button>
+          <Button @click="cancel">Cancel</Button>
         </footer>
       </div>
     </div>
@@ -25,8 +27,36 @@ export default {
       type: Boolean,
       default: false,
     },
+    closeOnClickOverlay:{
+        type:Boolean,
+        default: true
+    },
+    ok:{
+        type:Function
+    },
+    cancel:{
+        type:Function
+    }
   },
   components: { Button },
+  setup(props, context) {
+    const close = () => {
+      context.emit("update:visible", !props.visible);
+    };
+    const onClickOverlay = ()=>{
+        if(props.closeOnClickOverlay){ close() }
+    }
+    const ok = () =>{
+        if(props.ok ?.() !== false){
+            close()
+        }
+    }
+    const cancel = () =>{
+        context.emit("cancel")
+        close()
+    }
+    return { close, onClickOverlay,ok,cancel };
+  },
 };
 </script>
 
