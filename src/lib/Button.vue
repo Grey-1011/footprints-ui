@@ -111,23 +111,23 @@ export default {
   }
 
   &.no-level-main {
-    background: #40a9ff;
+    background: #00d1b2;
     color: #fff;
-    border-color: #40a9ff;
+    border-color: #00d1b2;
     &:hover,
     &:focus {
-      background: darken($color: #40a9ff, $amount: 10%);
-      border-color: darken($color: #40a9ff, $amount: 10%);
+      background: darken($color: #00d1b2, $amount: 10%);
+      border-color: darken($color: #00d1b2, $amount: 10%);
     }
   }
   &.no-level-danger {
-    background: red;
+    background: #f14668;
     color: #fff;
-    border-color: red;
+    border-color: #f14668;
     &:hover,
     &:focus {
-      background: darken($color: red, $amount: 10%);
-      border-color: darken($color: red, $amount: 10%);
+      background: darken($color: #f14668, $amount: 10%);
+      border-color: darken($color: #f14668, $amount: 10%);
     }
   }
 

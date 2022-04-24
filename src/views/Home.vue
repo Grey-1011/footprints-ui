@@ -3,7 +3,7 @@
     <Topnav />
     <div class="banner">
       <h1>No name UI</h1>
-      <h2>一个厉害的 UI框架</h2>
+      <h2>一个没有名字的 UI框架</h2>
       <p class="actions">
         <a href="https://github.com">GitHub</a>
         <router-link to="/doc">开始</router-link>

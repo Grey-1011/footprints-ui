@@ -7,7 +7,10 @@
     <Button theme="link">Link Button</Button>
   </div>
   <div>
-    <h2>Size</h2>
+    <h3 id="sizes">
+      <a href="#sizes"> # </a>
+      <span>Sizes</span>
+    </h3>
     <Button>Button</Button>
     <Button size="big">Button</Button>
     <Button size="small">Button</Button>
