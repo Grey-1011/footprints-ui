@@ -1,27 +1,32 @@
 <template>
   <div class="no-tabs">
     <div class="no-tabs-nav">
-      <div class="no-tabs-nav-item" :class="{selected:t === selected}" v-for="(t, index) in titles" :key="index" @click="select(t)">
+      <div
+        class="no-tabs-nav-item"
+        :class="{ selected: t === selected }"
+        v-for="(t, index) in titles"
+        :key="index"
+        @click="select(t)"
+      >
         {{ t }}
       </div>
+      <div class="no-tabs-nav-indicator"></div>
     </div>
     <div class="no-tabs-content">
-      <component
-        class="no-tabs-content-item"
-        :is="current" :key="selected" />
+      <component class="no-tabs-content-item" :is="current" :key="selected" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed } from 'vue';
+import { computed } from "vue";
 import Tab from "./Tab.vue";
 export default {
-    props:{
-        selected:{
-            type:String,
-        }
+  props: {
+    selected: {
+      type: String,
     },
+  },
   setup(props, context) {
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
@@ -30,20 +35,20 @@ export default {
       }
     });
 
-    const current = computed(()=>{
-        return defaults.filter((tag)=>{
-            return tag.props.title === props.selected
-        })[0]
-    }) 
-    
+    const current = computed(() => {
+      return defaults.filter((tag) => {
+        return tag.props.title === props.selected;
+      })[0];
+    });
+
     const titles = defaults.map((tag) => {
       return tag.props.title;
     });
 
-    const select = (title:String)=>{
-        context.emit("update:selected",title)
-    }
-    return { defaults, titles,current,select };
+    const select = (title: String) => {
+      context.emit("update:selected", title);
+    };
+    return { defaults, titles, current, select };
   },
 };
 </script>
@@ -58,6 +63,7 @@ $border-color: #d9d9d9;
     display: flex;
     color: $color;
     border-bottom: 1px solid $border-color;
+    position: relative;
 
     &-item {
       padding: 8px 0;
@@ -70,7 +76,16 @@ $border-color: #d9d9d9;
       &.selected {
         color: $blue;
       }
+
     }
+      &-indicator {
+        position: absolute;
+        height: 3px;
+        background: $blue;
+        left: 0;
+        bottom: -1px;
+        width: 100px;
+      }
   }
   &-content {
     padding: 8px 0;
