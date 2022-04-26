@@ -14,7 +14,7 @@
       <div class="no-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="no-tabs-content">
-      <component class="no-tabs-content-item" :is="current" :key="selected" />
+      <component class="no-tabs-content-item" :is="current" :key="current.props.title" />
     </div>
   </div>
 </template>
@@ -54,6 +54,10 @@ export default {
       }
     });
 
+    const current = computed(()=>{
+      return defaults.find(tag => tag.props.title === props.selected)
+    })
+
     const titles = defaults.map((tag) => {
       return tag.props.title;
     });
@@ -68,6 +72,7 @@ export default {
       selectedItem,
       indicator,
       container,
+      current
     };
   },
 };

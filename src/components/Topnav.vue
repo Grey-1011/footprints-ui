@@ -1,12 +1,18 @@
 <template>
   <div class="topnav">
-    <div class="logo">LOGO</div>
+    <div class="logo">
+      <svg class="icon">
+        <use xlink:href="#icon-dog"></use>
+      </svg>
+    </div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
     </ul>
     <div class="toggleAside" @click="toggleMenu">
-      <i class="iconfont icon-menu"></i>
+      <svg class="icon">
+        <use xlink:href="#icon-menu"></use>
+      </svg>
     </div>
   </div>
 </template>
@@ -29,9 +35,8 @@ export default {
 
 
 <style lang="scss" scoped>
-@import url(//at.alicdn.com/t/font_3345733_jhzu8wzoj39.css);
 .topnav {
-  background: pink;
+  color: #fff;
   display: flex;
   padding: 16px;
   position: fixed;
@@ -44,6 +49,11 @@ export default {
   > .logo {
     max-width: 6em;
     margin-right: auto;
+
+    > svg {
+      width: 32px;
+      height: 32px;
+    }
   }
   > .menu {
     display: flex;
