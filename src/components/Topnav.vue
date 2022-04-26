@@ -1,15 +1,14 @@
 <template>
   <div class="topnav">
-    <div class="logo">
+    <router-link to="/" class="logo">
       <svg class="icon">
         <use xlink:href="#icon-dog"></use>
       </svg>
-    </div>
-    <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
-    </ul>
-    <div class="toggleAside" @click="toggleMenu">
+    </router-link>
+    <li>
+      <router-link to="/doc">文档</router-link>
+    </li>
+    <div v-if="toggleMenuButtonVisible" class="toggleAside" @click="toggleMenu">
       <svg class="icon">
         <use xlink:href="#icon-menu"></use>
       </svg>
@@ -21,6 +20,12 @@
 import { inject, Ref } from "vue";
 export default {
   name: "Topnav",
+  props: {
+    toggleMenuButtonVisible: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup() {
     const asideVisible = inject<Ref<boolean>>("asideVisible");
     console.log(`topnav 获取的 asideVisible: ${asideVisible.value}`);
@@ -64,8 +69,8 @@ export default {
     }
   }
   > .toggleAside {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     display: none;
     position: absolute;
     top: 50%;
