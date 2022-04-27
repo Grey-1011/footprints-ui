@@ -3,8 +3,8 @@
     <div class="topnavAndBanner">
       <Topnav />
       <div class="banner">
-        <h1>No name UI</h1>
-        <h2>一个没有名字的 UI框架</h2>
+        <h1>Footprints UI</h1>
+        <h2>一个有足迹的 UI 框架</h2>
         <p class="actions">
           <a href="https://github.com">GitHub</a>
           <router-link to="/doc">开始</router-link>
@@ -49,16 +49,19 @@ export default {
 <style lang="scss" scoped>
 .home {
   min-height: 100vh;
-  background: #000000;
+  // background: #80c9ac;
+  // background: linear-gradient(135deg, rgba(20,32,55,1) 0%, rgba(25,27,45,1) 100%);
 }
 
 .topnavAndBanner {
-  background: #000000;
-  // background: linear-gradient(90deg, rgba(76,191,176,1) 0%, rgba(1,1,1,1) 100%);
+  // background: #d7dddb;
+  background: #80c9ac;
+
+  
 }
 
 .banner {
-  color: #fff;
+  color: #f9f5f1;
   padding: 100px 0;
   display: flex;
   justify-content: center;
@@ -66,18 +69,19 @@ export default {
   flex-direction: column;
 
   h2 {
-    color: #a1a1a1;
+    color: #0f172a;
     padding: 8px;
   }
   > .actions {
     padding: 8px 0;
     a {
       margin: 0 8px;
-      background: #276df1;
+      // background: #d7dddb;
       display: inline-block;
       padding: 8px 24px;
-      color: white;
-      border-radius: 20px;
+      color: #000;
+      border: 2px solid #000;
+      border-radius: 25px;
 
       &:hover {
         text-decoration: none;
@@ -89,6 +93,7 @@ export default {
 .features {
   margin: 64px auto;
   width: 400px;
+
   @media (min-width: 800px) {
     width: 800px;
   }
@@ -117,11 +122,11 @@ export default {
       > h3 {
         grid-area: title;
         font-size: 28px;
-        color: #fff;
+        color: #1f1e1d;
       }
       > p {
         grid-area: text;
-        color: #fff;
+        color: #1f1e1d;
       }
     }
   }

@@ -41,7 +41,8 @@ export default {
 
 <style lang="scss" scoped>
 .topnav {
-  color: #fff;
+  color: #eeebe9;
+  // border-bottom: 1px solid #899a94;
   display: flex;
   padding: 16px;
   position: fixed;
