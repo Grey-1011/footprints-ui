@@ -9,8 +9,8 @@
       <div class="demo-actions">
         <Button>查看代码</Button>
       </div>
-      <div>
-        <pre>&lt;Switch v-model:value="bool" /&gt;</pre>
+      <div class="demo-code">
+        <pre>{{Switch1Demo.__sourceCode}}</pre>
       </div>
     </div>
   </div>
@@ -21,11 +21,13 @@ import { ref } from "vue";
 import Switch from "../lib/Switch.vue";
 import Button from "../lib/Button.vue";
 import Switch1Demo from "./Switch1.demo.vue";
+console.log(Switch1Demo.__sourceCode);
+
 export default {
   components: { Switch, Button, Switch1Demo },
   setup() {
     const bool = ref(false);
-    return { bool };
+    return { bool,Switch1Demo };
   },
 };
 </script>
