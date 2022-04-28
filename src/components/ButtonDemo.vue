@@ -1,40 +1,26 @@
 <template>
   <div>
-    <h2>Style</h2>
-    <Button>Hello Button</Button>
-    <Button theme="text">Text Button</Button>
-    <Button theme="button">Button</Button>
-    <Button theme="link">Link Button</Button>
-  </div>
-  <div>
-    <h3 id="sizes">
-      <a href="#sizes"> # </a>
-      <span>Sizes</span>
-    </h3>
-    <Button>Button</Button>
-    <Button size="big">Button</Button>
-    <Button size="small">Button</Button>
-  </div>
-  <div>
-    <h2>Level</h2>
-    <Button level="main">Main Button</Button>
-    <Button>Normal Button</Button>
-    <Button level="danger">Danger Button</Button>
-  </div>
-  <div>
-    <h2>Disabled</h2>
-    <Button disabled>Disabled Button</Button>
-  </div>
-  <div>
-    <h2>Loading</h2>
-    <Button loading>Loading</Button>
-    <Button>Loaded</Button>
+    <h1>Button</h1>
+    <Demo :component="Button1Demo"/>
+    <Demo :component="Button2Demo"/>
+    <Demo :component="Button3Demo"/>
+    <Demo :component="Button4Demo"/>
+    <Demo :component="Button5Demo"/>
   </div>
 </template>
 
 <script lang="ts">
-import Button from "../lib/Button.vue";
+import Demo from "./Demo.vue";
+import Button1Demo from './Button1.demo.vue';
+import Button2Demo from './Button2.demo.vue';
+import Button3Demo from './Button3.demo.vue';
+import Button4Demo from './Button4.demo.vue';
+import Button5Demo from './Button5.demo.vue';
+
 export default {
-  components: { Button },
+  components: { Demo },
+  setup(){
+    return { Button1Demo, Button2Demo, Button3Demo, Button4Demo, Button5Demo }
+  }
 };
 </script>
