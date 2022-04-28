@@ -1,6 +1,8 @@
 <template>
   <div>
     <h1>Switch</h1>
+    <Demo :component="Switch1Demo"/>
+    <hr>
     <div class="demo">
       <h2>常规用法</h2>
       <div class="demo-component">
@@ -17,6 +19,7 @@
 </template>
 
 <script lang="ts">
+import Demo from './Demo.vue'
 import { ref } from "vue";
 import Switch from "../lib/Switch.vue";
 import Button from "../lib/Button.vue";
@@ -29,7 +32,7 @@ console.log(Prism);
 
 
 export default {
-  components: { Button },
+  components: { Button, Demo },
   setup() {
     const bool = ref(false);
     return { bool, Switch1Demo, Prism };
