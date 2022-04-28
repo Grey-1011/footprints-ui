@@ -80,7 +80,7 @@ export default {
   }
 }
 aside {
-  background: lightblue;
+  background: #f8f8f8;
   width: 150px;
   padding: 16px 0;
   position: fixed;
@@ -102,7 +102,7 @@ aside {
       }
 
       .router-link-active {
-        background: #fff;
+        background: #80c9ac;
       }
     }
   }

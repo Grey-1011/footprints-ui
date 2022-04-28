@@ -42,9 +42,10 @@ export default {
 <style lang="scss" scoped>
 .topnav {
   color: #eeebe9;
+  background: #80c9ac;
   // border-bottom: 1px solid #899a94;
   display: flex;
-  padding: 16px;
+  padding: 8px 16px;
   position: fixed;
   top: 0;
   left: 0;
@@ -84,6 +85,9 @@ export default {
   }
 
   @media (max-width: 500px) {
+    > .topnav {
+      background: #80c9ac;
+    }
     > .menu {
       display: none;
     }

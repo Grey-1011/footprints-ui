@@ -33,10 +33,12 @@ export default {
         "html"
       );
     });
-    const codeVisible = ref(false)
-    const toggleCode = () =>{codeVisible.value = !codeVisible.value}
+    const codeVisible = ref(false);
+    const toggleCode = () => {
+      codeVisible.value = !codeVisible.value;
+    };
 
-    return { Prism, html, codeVisible,toggleCode };
+    return { Prism, html, codeVisible, toggleCode };
   },
 };
 </script>
@@ -52,10 +54,10 @@ $border-color: #d9d9d9;
     border-bottom: 1px solid $border-color;
   }
   &-component {
-    padding: 16px 24px;
+    padding: 16px;
   }
   &-actions {
-    padding: 8px 0;
+    padding: 8px 16px;
     border-top: 1px dashed $border-color;
   }
   &-code {

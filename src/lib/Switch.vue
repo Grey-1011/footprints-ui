@@ -29,7 +29,7 @@ export default {
   position: relative;
   width: 80px;
   height: 32px;
-  // margin: 0 auto 0 auto;
+  margin-left: 24px;
   overflow: hidden;
 
   .pick,

@@ -8,13 +8,21 @@
         :key="index"
         @click="select(t)"
         :ref="
-          (el) => {if (t===selected) selectedItem = el;}">
+          (el) => {
+            if (t === selected) selectedItem = el;
+          }
+        "
+      >
         {{ t }}
       </div>
       <div class="no-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="no-tabs-content">
-      <component class="no-tabs-content-item" :is="current" :key="current.props.title" />
+      <component
+        class="no-tabs-content-item"
+        :is="current"
+        :key="current.props.title"
+      />
     </div>
   </div>
 </template>
@@ -33,19 +41,18 @@ export default {
     const indicator = ref<HTMLDivElement>(null);
     const container = ref<HTMLDivElement>(null);
 
-    onMounted(()=>{
-
-      watchEffect(()=>{
+    onMounted(() => {
+      watchEffect(() => {
         const { width } = selectedItem.value.getBoundingClientRect();
-      indicator.value.style.width = width + "px";
-      // 获取 container 的left
-      const { left: left1 } = container.value.getBoundingClientRect();
-      // 获取当前 div 的 left
-      const { left: left2 } = selectedItem.value.getBoundingClientRect();
-      const left = left2 - left1;
-      indicator.value.style.left = left + "px";
-      })
-    })
+        indicator.value.style.width = width + "px";
+        // 获取 container 的left
+        const { left: left1 } = container.value.getBoundingClientRect();
+        // 获取当前 div 的 left
+        const { left: left2 } = selectedItem.value.getBoundingClientRect();
+        const left = left2 - left1;
+        indicator.value.style.left = left + "px";
+      });
+    });
 
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
@@ -54,9 +61,9 @@ export default {
       }
     });
 
-    const current = computed(()=>{
-      return defaults.find(tag => tag.props.title === props.selected)
-    })
+    const current = computed(() => {
+      return defaults.find((tag) => tag.props.title === props.selected);
+    });
 
     const titles = defaults.map((tag) => {
       return tag.props.title;
@@ -72,7 +79,7 @@ export default {
       selectedItem,
       indicator,
       container,
-      current
+      current,
     };
   },
 };
@@ -84,6 +91,7 @@ $color: #333;
 $border-color: #d9d9d9;
 
 .no-tabs {
+  padding: 0 24px;
   &-nav {
     display: flex;
     color: $color;

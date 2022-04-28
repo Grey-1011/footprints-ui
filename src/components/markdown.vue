@@ -20,3 +20,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.markdown-body{
+    padding: 8px 16px;
+}
+</style>
