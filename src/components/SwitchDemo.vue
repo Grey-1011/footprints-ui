@@ -4,7 +4,7 @@
     <div class="demo">
       <h2>常规用法</h2>
       <div class="demo-component">
-        <Switch-1-demo />
+        <component :is="Switch1Demo"/>
       </div>
       <div class="demo-actions">
         <Button>查看代码</Button>
@@ -24,10 +24,10 @@ import Switch1Demo from "./Switch1.demo.vue";
 console.log(Switch1Demo.__sourceCode);
 
 export default {
-  components: { Switch, Button, Switch1Demo },
+  components: { Button },
   setup() {
     const bool = ref(false);
-    return { bool,Switch1Demo };
+    return { bool, Switch1Demo };
   },
 };
 </script>
