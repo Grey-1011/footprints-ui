@@ -81,9 +81,9 @@ export default {
       border: 2px solid #000;
       border-radius: 25px;
 
-      &:hover {
-        text-decoration: none;
-      }
+      // &:hover {
+      //   // text-decoration: none;
+      // }
     }
   }
 }
