@@ -14,7 +14,7 @@
 &lt;/template&gt; 
         
 &lt;script&gt; 
-    import {Button, Tabs, Switch, Dialog} from "king-ui" 
+    import {Button, Tabs, Switch, Dialog} from "Footprints-ui" 
     export default { 
         components: {Button} 
     } 

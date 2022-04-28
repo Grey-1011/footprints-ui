@@ -7,7 +7,7 @@
         <pre><code>yarn add footprints-ui</code></pre> 
   
         <p> 
-            下一节：<a href="#/doc/Get-started">开始使用</ a> 
+            下一节：<a href="#/doc/Get-started">开始使用</a> 
         </p > 
   </article> 
 </template>

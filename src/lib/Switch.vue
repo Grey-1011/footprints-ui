@@ -9,7 +9,6 @@
       <div class="pick"></div>
       <div class="layer"></div>
     </div>
-    <div>{{ value }}</div>
   </div>
 </template>
 
@@ -28,9 +27,9 @@ export default {
 <style lang="scss">
 .btn_check {
   position: relative;
-  width: 200px;
-  height: 80px;
-  margin: 0 auto 0 auto;
+  width: 80px;
+  height: 32px;
+  // margin: 0 auto 0 auto;
   overflow: hidden;
 
   .pick,
@@ -71,17 +70,17 @@ export default {
 
   .pick:before,
   .pick:after {
-    content: "YES";
+    content: "Y";
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     top: 4px;
     left: 4px;
-    width: 72px;
-    height: 72px;
+    width: 24px;
+    height: 24px;
     color: #fff;
-    font-size: 18px;
+    font-size: 6px;
     font-weight: bold;
     text-align: center;
     line-height: 1;
@@ -91,14 +90,14 @@ export default {
   }
 
   .pick:after {
-    content: "NO";
-    right: -72px;
+    content: "N";
+    right: -24px;
     left: auto;
     background: #444;
   }
 
   .no-checked + .pick:before {
-    left: -72px;
+    left: -24px;
   }
 
   .no-checked + .pick::after {
