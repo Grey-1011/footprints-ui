@@ -12,7 +12,8 @@ export default {
     const width = document.documentElement.clientWidth; // 获取屏幕宽度
     const asideVisible = ref(width <= 500 ? false : true);
     provide("asideVisible", asideVisible);
-    router.afterEach(() => { // 路由切换了
+    router.afterEach(() => {
+      // 路由切换了
       if (width <= 500) {
         asideVisible.value = false;
       }
