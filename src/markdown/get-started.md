@@ -4,7 +4,7 @@
 
 然后添加如下代码：
 ```
-import { Button, Tabs, Switch, Dialog } from "Footprints-ui"
+import { Button, Tab, Tabs, Switch, Dialog, openDialog } from "footprints-ui"
 ```
 就可以使用该组件了。
 
@@ -17,7 +17,7 @@ import { Button, Tabs, Switch, Dialog } from "Footprints-ui"
 </template> 
         
 <script> 
-    import {Button, Tabs, Switch, Dialog} from "Footprints-ui" 
+    import {Button, Tab, Tabs, Switch, Dialog, openDialog } from "footprints-ui" 
     export default { 
         components: {Button} 
     } 
